@@ -38,19 +38,9 @@ class WeatherList extends Component {
     }
 }
 
-//this is probably not the best way to do this, maybe do it when you receive the data in the reducer???
-const conditionalState = (state) => {
-    if(state.weather.length < 1){
-        return state.weather.list
-    }
-    return state.weather.list.filter((item) => {
-        return state.weather.list.indexOf(item)%8 === 0;
-    })
-}
-
 const mapStateToProps = (state) => {
     console.log(state);
-    return ({ weather: conditionalState(state) })
+    return ({ weather: state.weather })
 }
 
 //the first argument of the connect function is the mapStateToProps for indicating that we have state to pass into this component, the second argument of the connect function is the action creator
